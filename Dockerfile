@@ -15,3 +15,5 @@ EXPOSE 8000
 
 # Set the entry point to start the HTTP server
 ENTRYPOINT ["python", "-m", "http.server", "8000"]
+
+#done with the file
