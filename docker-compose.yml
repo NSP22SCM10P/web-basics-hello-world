@@ -1,0 +1,7 @@
+version: '3'
+services:
+  my-node-app:
+    image: my-node-app
+    ports:
+      - "49100:9090"
+
