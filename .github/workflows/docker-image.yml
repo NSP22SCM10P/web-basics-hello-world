@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: docker build -t my-node-app .
     - name: run Dokcer conatiner
-      run: docker run -p 49100:3000 -d my-node-app
+      run: docker run -p 49100:9090 -d my-node-app
