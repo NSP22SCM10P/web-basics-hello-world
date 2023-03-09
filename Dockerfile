@@ -1,8 +1,8 @@
 # Use a Node.js base image
-FROM node:14
+FROM node:16
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./
@@ -14,11 +14,11 @@ RUN npm install
 COPY . .
 
 # Set the environment variables for the server
-ENV PORT=3000
-ENV NODE_ENV=production
+ENV PORT=9090
+
 
 # Expose the server port
 EXPOSE ${PORT}
 
 # Start the server
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
