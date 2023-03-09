@@ -1,19 +1,24 @@
-# Use a Python base image
-FROM python:3.8-slim-buster
+# Use a Node.js base image
+FROM node:14
 
-# Set the working directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the HTML file to the working directory
-COPY index.html .
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
 
-# Install the Python HTTP server
-RUN pip install http.server
+# Install the app dependencies
+RUN npm install
 
-# Expose port 8000
-EXPOSE 8000
+# Copy the app files to the container
+COPY . .
 
-# Set the entry point to start the HTTP server
-ENTRYPOINT ["python", "-m", "http.server", "8000"]
+# Set the environment variables for the server
+ENV PORT=3000
+ENV NODE_ENV=production
 
-#done with the file
+# Expose the server port
+EXPOSE ${PORT}
+
+# Start the server
+CMD ["npm", "start"]
